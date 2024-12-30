@@ -1,0 +1,813 @@
+<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Agency</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: linear-gradient(to bottom, #f3f4f6, #ffffff);
+        color: #333;
+        line-height: 1.6;
+      }
+
+      header {
+        background: linear-gradient(90deg, royalblue, purple);
+        padding: 20px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        margin: auto;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 0 0 10px #ffffff;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin: 0 15px;
+      }
+
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 10px 15px;
+        border-radius: 5px;
+      }
+
+      nav ul li a:hover {
+        background: #8b77ff;
+        color: #fff;
+        box-shadow: 0 0 15px rgba(27, 9, 184, 0.8), 0 0 20px white;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, royalblue, purple);
+        color: #fff;
+        padding: 100px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+      }
+
+      .hero button {
+        padding: 10px 20px;
+        border: none;
+        background: #8b77ff;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .hero button:hover {
+        background: #333;
+        box-shadow: 0 0 10px #ffffff;
+      }
+
+      .about {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4rem 2rem;
+        background-color: #f4f4f4;
+      }
+
+      .about-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        width: 60%; 
+      }
+
+      .about-text h2 {
+        font-size: 2rem;
+        color: #333;
+      }
+
+      .about-text p {
+        font-size: 1.2rem;
+        color: #666;
+        max-width: 800px;
+      }
+
+      .about-image {
+        width: 35%; 
+        max-width: 100%;
+      }
+
+      .about-image img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .services {
+        display: flex;
+        justify-content: space-around;
+        padding: 4rem 2rem;
+        background: linear-gradient(to bottom, #ffffff, #f3f4f6);
+        text-align: center;
+        flex-wrap: wrap;
+      }
+
+      .services h2 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .service {
+        background: #fff;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        width: 30%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin: 10px 0;
+      }
+
+      .service:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .service i {
+        font-size: 3rem;
+        color: royalblue;
+        margin-bottom: 15px;
+      }
+
+      .service h3 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .service p {
+        color: #666;
+      }
+
+      footer {
+        text-align: center;
+        padding: 1rem;
+        background: linear-gradient(90deg, royalblue, purple);
+        color: white;
+      }
+
+     
+      .testimonials {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .testimonials h2 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .testimonial-card {
+        width: 22%;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      .testimonial-card img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
+
+      .comment-meta {
+        font-size: 0.9em;
+        color: #777;
+        margin-top: 10px;
+      }
+
+      .response {
+        margin-top: 15px;
+        padding-left: 10px;
+        font-size: 1em;
+        color: #333;
+        background-color: #f1f1f1;
+        border-left: 3px solid #0073e6;
+        margin-top: 10px;
+        padding: 10px;
+      }
+
+      
+      @media (max-width: 768px) {
+        .testimonial-card {
+          width: 100%; 
+        }
+
+        .service {
+          width: 100%; 
+        }
+
+        .about {
+          flex-direction: column;
+        }
+
+        .about-content {
+          width: 100%;
+        }
+
+        .about-image {
+          width: 100%;
+        }
+      }
+
+      
+    #contact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 1rem;
+      text-align: left;
+      background-color: #f9f9f9;
+    }
+
+    .contact-text {
+      width: 45%;
+    }
+
+    .contact-text h2 {
+      font-size: 1.8rem; 
+      margin-bottom: 0.8rem;
+      color: #333;
+    }
+
+    .contact-text p {
+      font-size: 1rem; 
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-image {
+      width: 35%; 
+      height: auto;
+    }
+
+    .contact-button {
+      background-color: #8b77ff;
+      padding: 10px 15px; 
+      color: #fff;
+      font-size: 0.9rem; 
+      border-radius: 5px;
+      border: none;
+      margin: 8px; 
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .contact-button:hover {
+      background: #333;
+      box-shadow: 0 0 8px #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      #contact {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+      }
+
+      .contact-text {
+        width: 100%;
+      }
+
+      .contact-image {
+        width: 100%;
+        margin-top: 1rem;
+      }
+    }
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+      #blog {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 2rem;
+  background-color: #f4f4f4;
+}
+
+
+  .blog-section {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+
+  .blog-intro p {
+    font-size: 1.1rem;
+    color: #333;
+  }
+
+  .blog-intro a {
+    color: royalblue;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .blog-intro a:hover {
+    text-decoration: underline;
+  }
+
+  .blog-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .blog-image {
+    flex: 1;
+    max-width: 40%;
+  }
+
+  .blog-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .blog-text {
+    flex: 2;
+    max-width: 55%;
+  }
+
+  .blog-text h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .blog-text p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .read-more {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 10px 20px;
+    background-color: royalblue;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+
+  .read-more:hover {
+    background-color: #333;
+  }
+
+ 
+  @media (max-width: 768px) {
+    .blog-content {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .blog-image {
+      max-width: 100%;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-text {
+      max-width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+
+ 
+</style>
+
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div class="logo"> IT Agency</div>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <h1>Welcome to IT Agency</h1>
+      <p>Innovative IT solutions for your business growth</p>
+      <button onclick="document.getElementById('contact').scrollIntoView();">Get Started</button>
+    </div>
+
+    <section id="about" class="about">
+      <div class="about-content">
+        <h2>About Us</h2>
+        <p>
+          We provide innovative IT solutions to help businesses grow and succeed in the digital age. Our team of experts is dedicated to delivering results that exceed expectations. Whether it's building a website, creating mobile applications, or providing cloud solutions, we deliver excellence in every project.
+        </p>
+      </div>
+      <div class="about-image">
+        <img src= "C:\Users\angie\OneDrive\Desktop\Business woman.jpeg" />
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <h2>Our Services</h2>
+      <div class="service">
+        <i class="fas fa-laptop-code"></i>
+        <h3>Web Development</h3>
+        <p>Build modern, responsive websites with advanced functionality.</p>
+      </div>
+      <div class="service">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>App Development</h3>
+        <p>Creating powerful mobile applications to engage your audience.</p>
+      </div>
+      <div class="service">
+        <i class="fas fa-cloud"></i>
+        <h3>Cloud Solutions</h3>
+        <p>Maximize efficiency with scalable cloud-based solutions.</p>
+      </div>
+    </section>
+   
+   
+    <div class="blog">
+        <div class="blog-section">
+          
+          <div class="blog-intro">
+            <p>Check out this interesting blog post: <a href="https://www.quora.com/How-do-I-choose-the-right-business-technology-solutions-for-my-company" target="_blank">How do I choose the right business technology solutions for my company</a></p>
+          </div>
+      
+          
+          <div class="blog-content">
+            
+            <div class="blog-image">
+              <img src="C:\Users\angie\OneDrive\Desktop\TechBlog.gif"/>
+            </div>
+      
+            <div class="blog-text"> 
+              <h3>How to Choose the Best IT Solutions for Your Business</h3>
+              <p>
+                Choosing the right IT solutions can make a significant difference in the success of your business. The key to choosing the best solutions lies in understanding the needs of your business and how the right technology can help you grow. In this post, we will discuss the essential steps to select IT tools that enhance your productivity, save costs, and drive growth.
+              </p>
+            </div>
+          </div>
+      
+          <a href="https://www.quora.com/How-do-I-choose-the-right-business-technology-solutions-for-my-company" target="_blank" class="read-more">Read More</a>
+        </div>
+      </div>
+      
+      
+    <section id="testimonials" class="testimonials">
+      <h2>Testimonials</h2>
+      <div class="testimonial-card">
+        <img src="C:\Users\angie\OneDrive\Desktop\male client.jpeg" alt="John Doe" />
+        <p>"Angie IT Agency has transformed the way we do business!"</p>
+        <div class="comment-meta">
+          <span>- JMark Ndabezitha, CEO of ITCorp</span>
+        </div>
+        <div class="response">
+          <p>We appreciate the feedback, John! Looking forward to working more together.</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="C:\Users\angie\OneDrive\Desktop\Female client.jpeg" alt="Jane Smith" />
+        <p>"Their support team is always available and helpful!"</p>
+        <div class="comment-meta">
+          <span>- Jane Smith, Marketing Director at CompanyX</span>
+        </div>
+        <div class="response">
+          <p>Thank you, Jane! We're happy to assist you anytime.</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="C:\Users\angie\OneDrive\Desktop\man client.jpeg" alt="Sam Wilson" />
+        <p>"Amazing results! Highly recommend their services."</p>
+        <div class="comment-meta">
+          <span>- Sam Wilson, Founder of InnovateCo</span>
+        </div>
+        <div class="response">
+          <p>Thank you, Sam! It was a pleasure working with you.</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <img src="C:\Users\angie\OneDrive\Desktop\IMAGE3.png" alt="Emma Johnson" />
+        <p>"Angie IT Agency delivered beyond our expectations!"</p>
+        <div class="comment-meta">
+          <span>- Emma Johnson, CTO at GreenTech</span>
+        </div>
+        <div class="response">
+          <p>Thanks, Emma! We're excited to continue our partnership.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-text">
+          <h2>Contact Us</h2>
+          <p>
+            We'd love to hear from you! Whether you have a question about
+            features, pricing, or anything else, our team is ready to answer all
+            your questions.
+          </p>
+          <p>
+            Feel free to reach out to us via email or phone, and we'll respond
+            promptly.
+          </p>
+          <a href="mailto:angiemathenjwa@gmail.com" class="contact-button">Email Us</a>
+        <a href="tel:0636179653" class="contact-button">Call Us</a>
+        </div>
+  
+        <img
+          src="C:\Users\angie\OneDrive\Desktop\contact.jpg"
+          alt="Contact Us"
+          class="contact-image"
+        />
+      </section>
+
+    
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"
+    ></script>
+</section>
+
+<div id="angieChatbot" onclick="toggleChatbot()">🤖</div>
+
+<div id="angieChatbotPopup">
+  <h3>Hello, I am Angie!</h3>
+  <p>How can I assist you today?</p>
+  <div class="chat-box" id="chatbox"></div>
+  <div class="input-section">
+    <input type="text" id="userMessage" placeholder="Type your message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2024 IT Agency. All Rights Reserved. Designed by Angel Mathenjwa</p>
+</footer>
+
+<script>
+  let userSaidYes = false;
+
+  function toggleChatbot() {
+    const popup = document.getElementById("angieChatbotPopup");
+    popup.style.display = popup.style.display === "block" ? "none" : "block";
+  }
+
+  window.onload = function () {
+    setTimeout(() => {
+      document.getElementById("angieChatbot").style.display = "block";
+    }, 1000);
+  };
+
+  function sendMessage() {
+    const userMessage = document.getElementById("userMessage").value.trim();
+    if (!userMessage) return;
+
+    const chatbox = document.getElementById("chatbox");
+    const userDiv = document.createElement("div");
+    userDiv.classList.add("chat-message", "user-message");
+    userDiv.textContent = userMessage;
+    chatbox.appendChild(userDiv);
+
+    const botResponse = getBotResponse(userMessage);
+    addTypingEffect(botResponse);
+
+    document.getElementById("userMessage").value = "";
+    chatbox.scrollTop = chatbox.scrollHeight;
+  }
+
+  function addTypingEffect(response) {
+    const chatbox = document.getElementById("chatbox");
+    const botDiv = document.createElement("div");
+    botDiv.classList.add("chat-message", "bot-message");
+    chatbox.appendChild(botDiv);
+
+    let i = 0;
+    const typingInterval = setInterval(() => {
+      if (i < response.length) {
+        botDiv.textContent += response.charAt(i);
+        i++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 30);
+  }
+
+  function getBotResponse(userMessage) {
+    const lowerMessage = userMessage.toLowerCase();
+    if (lowerMessage.includes("who created this page") || lowerMessage.includes("who is angel mathenjwa")) {
+  return "👨‍💻 The landing page was created by Angel Mathenjwa, a passionate IT professional and Junior Software Developer.";
+}
+
+if (lowerMessage.includes("what is IT Agency") || lowerMessage.includes("what do you do")) {
+  return "🌐 We are an IT agency that provides Web Development, UI/UX Design, App Development, Cloud Solutions, and digital transformation consulting.";
+}
+
+if (lowerMessage.includes("services")) {
+  return "✨ Our services include:\n\n- 💻 Web Development: Building modern, responsive websites with advanced functionality.\n- 📱 App Development: Creating powerful mobile applications to engage your audience.\n- ☁️ Cloud Solutions: Maximizing efficiency with scalable cloud-based systems.\n\nFeel free to ask more about any of these! 😊";
+}
+
+if (lowerMessage.includes("how can you help my business")) {
+  return "🚀 We can help your business by:\n- Creating a professional online presence through web development 🌐\n- Designing user-friendly interfaces 🎨\n- Building custom mobile apps 📱\n- Streamlining operations with cloud solutions ☁️\n\nLet’s take your business to the next level! 💼";
+}
+
+if (lowerMessage.includes("how do i contact you")) {
+  return "📩 You can contact us through the contact form on the website, or reach out to Angel Mathenjwa directly for more information.";
+}
+
+if (lowerMessage.includes("hi") || lowerMessage.includes("hello")) {
+  return "👋 Hi there! How can I assist you today? 😊";
+}
+
+if (lowerMessage.includes("are you a chatbot")) {
+  return "🤖 Yes, I am a chatbot, here to assist you with any questions you have about our IT services.";
+}
+
+if (lowerMessage.includes("tell me about web development")) {
+  return "💻 Our Web Development services focus on creating modern, responsive websites that are visually appealing, functional, and tailored to your business needs.";
+}
+
+if (lowerMessage.includes("tell me about app development")) {
+  return "📱 Our App Development team specializes in crafting powerful, user-friendly mobile applications to keep your audience engaged and connected.";
+}
+
+if (lowerMessage.includes("tell me about cloud solutions")) {
+  return "☁️ Our Cloud Solutions are designed to maximize efficiency and scalability, offering secure, cloud-based systems tailored to your business requirements.";
+}
+
+if (lowerMessage.includes("what is ui/ux design")) {
+  return "🎨 UI/UX Design is about creating visually appealing and intuitive interfaces that enhance user experiences. We ensure your website or app is not only beautiful but also easy to navigate.";
+}
+
+if (lowerMessage.includes("do you offer consulting")) {
+  return "📊 Yes, we offer IT Consulting services to help businesses navigate digital transformation, optimize operations, and implement the best technology solutions.";
+}
+
+if (lowerMessage.includes("can you create a logo")) {
+  return "🖌️ Absolutely! We specialize in graphic design and can create professional logos, business letterheads, posters, and more. Let us know your design needs!";
+}
+
+if (lowerMessage.includes("do you work internationally")) {
+  return "🌍 Yes, we offer our services internationally and can collaborate remotely to bring your project to life.";
+}
+
+return "🤔 I'm sorry, I didn't understand that. Could you please rephrase?";
+  }
+
+</script>
+
+<style>
+  #angieChatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(90deg, royalblue, purple);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 50%, 100% {
+      transform: translateY(0);
+    }
+    25%, 75% {
+      transform: translateY(-10px);
+    }
+  }
+
+  #angieChatbotPopup {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: 300px;
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+  }
+
+  .chat-box {
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 10px 0;
+  }
+
+  .chat-message {
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 4px;
+    word-wrap: break-word;
+  }
+
+  .user-message {
+    background-color: #f1f1f1;
+    align-self: flex-end;
+  }
+
+  .bot-message {
+    background-color: #6a11cb;
+    color: white;
+    align-self: flex-start;
+  }
+
+  .input-section {
+    display: flex;
+    gap: 10px;
+  }
+
+  .input-section input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  .input-section button {
+    padding: 8px 12px;
+    background-color: #6a11cb;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+  }
+</style>
+</body>
+</html>
